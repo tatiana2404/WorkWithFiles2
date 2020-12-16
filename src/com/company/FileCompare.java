@@ -42,21 +42,13 @@ public class FileCompare {
     }
 
     public static void newFile(String str){
-        FileOutputStream f=null;
         byte[] b=str.getBytes();
-        try{
-            f=new FileOutputStream("D:\\Файлы\\compare.txt");
+        try(FileOutputStream f=new FileOutputStream("D:\\Файлы\\compare.txt")){
             f.write(b);
         }catch(IOException e){
             System.out.println("I/O ошибка");
         }
-        finally{
-            try{
-                f.close();
-            } catch(IOException e){
-                System.out.println("Error close file");
-            }
-        }
+        
     }
 
 }
